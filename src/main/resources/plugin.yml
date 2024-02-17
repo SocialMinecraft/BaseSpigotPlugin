@@ -1,0 +1,12 @@
+name: SoMCBasePlugin
+version: 1.0
+main: dev.garvis.somcbase.SoMCBasePlugin
+commands:
+  setbase:
+    description: Will set your current location to your base.
+    usage: /<command>
+    permission: somcbase.base
+  base:
+    description: Will return you to your base.
+    usage: /<command>
+    permission: somcbase.return
