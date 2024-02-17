@@ -28,7 +28,8 @@ public class BaseListener implements Listener {
         Integer prev = cache.get(event.getPlayer().getUniqueId().toString());
         cache.put(event.getPlayer().getUniqueId().toString(), now);
         if (prev == null) prev = 0;
-        if (now == 0) event.getPlayer().setAllowFlight(false);
+        //if (now == 0) event.getPlayer().setAllowFlight(false);
+        event.getPlayer().setAllowFlight(now > 0);
 
         /*event.getPlayer().sendMessage(Integer.toString(now) +
                         (prev < 25 && now >= 25 ? "Y" : "N") +
@@ -43,7 +44,7 @@ public class BaseListener implements Listener {
             event.getPlayer().sendTitle(
                     ChatColor.GREEN + "Welcome Home",
                     "", 1, 20, 1);
-            event.getPlayer().setAllowFlight(true);
+            //event.getPlayer().setAllowFlight(true);
         } else if (prev >= 25 && now < 25) {
             // leaving home
             /*Bukkit.getServer().getPluginManager().callEvent(
