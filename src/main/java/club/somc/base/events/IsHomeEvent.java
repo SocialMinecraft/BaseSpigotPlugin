@@ -1,4 +1,4 @@
-package dev.garvis.somcbase.events;
+package club.somc.base.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

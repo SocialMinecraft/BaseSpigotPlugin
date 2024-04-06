@@ -1,9 +1,9 @@
-package dev.garvis.somcbase;
+package club.somc.base;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class SoMCBasePlugin extends JavaPlugin {
+public class BasePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {

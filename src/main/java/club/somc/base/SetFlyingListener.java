@@ -1,6 +1,6 @@
-package dev.garvis.somcbase;
+package club.somc.base;
 
-import dev.garvis.somcbase.events.IsHomeEvent;
+import club.somc.base.events.IsHomeEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

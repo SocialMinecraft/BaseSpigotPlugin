@@ -1,6 +1,6 @@
 name: SoMCBasePlugin
 version: 1.0
-main: dev.garvis.somcbase.SoMCBasePlugin
+main: club.somc.base.BasePlugin
 commands:
   setbase:
     description: Will set your current location to your base.

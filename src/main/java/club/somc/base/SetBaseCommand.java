@@ -1,4 +1,4 @@
-package dev.garvis.somcbase;
+package club.somc.base;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
