@@ -1,5 +1,6 @@
-package club.somc.base;
+package club.somc.base.commands;
 
+import club.somc.base.Datastore;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

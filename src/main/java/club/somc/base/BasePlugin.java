@@ -1,5 +1,8 @@
 package club.somc.base;
 
+import club.somc.base.commands.ReturnToBaseCommand;
+import club.somc.base.commands.SetBaseCommand;
+import club.somc.base.listeners.BaseListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -13,7 +16,6 @@ public class BasePlugin extends JavaPlugin {
         this.getCommand("base").setExecutor(new ReturnToBaseCommand(ds));
 
         getServer().getPluginManager().registerEvents(new BaseListener(ds), this);
-        //getServer().getPluginManager().registerEvents(new SetFlyingListener(), this);
     }
 
     @Override

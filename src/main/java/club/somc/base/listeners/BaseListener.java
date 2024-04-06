@@ -1,5 +1,6 @@
-package club.somc.base;
+package club.somc.base.listeners;
 
+import club.somc.base.Datastore;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
