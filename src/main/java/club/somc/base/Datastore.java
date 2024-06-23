@@ -16,6 +16,7 @@ public class Datastore {
     private Objective base_y;
     private Objective base_z;
     private Objective base_world;
+    private Objective base_flight;
 
     public Datastore(JavaPlugin plugin) {
         // https://www.spigotmc.org/threads/creating-a-scoreboard.156548/
@@ -35,6 +36,9 @@ public class Datastore {
             if (board.getObjective("somcbase.world") == null) {
                 board.registerNewObjective("somcbase.world", "dummy", "SoMCBase.world");
             }
+            if (board.getObjective("somcbase.flight_on") == null) {
+                board.registerNewObjective("somcbase.flight_on", "dummy", "SoMCBase.Flight_On");
+            }
 
         } catch (IllegalArgumentException ex) {
             plugin.getLogger().severe(ex.toString());
@@ -43,6 +47,7 @@ public class Datastore {
         this.base_y = board.getObjective("somcbase.y");
         this.base_z = board.getObjective("somcbase.z");
         this.base_world = board.getObjective("somcbase.world");
+        this.base_flight = board.getObjective("somcbase.flight_on");
     }
 
     /**
@@ -103,6 +108,29 @@ public class Datastore {
         double distance = base.distance(player.getLocation());
 
         return (int)Math.max(175 - distance, 0);
+    }
+
+    /**
+     * Set if a player currently has flight enabled
+     * @param player The player to set the base location for.
+     * @param on True if the player would like to fly.
+     * @return True on success, false on failure.
+     */
+    public boolean setFlight(Player player, boolean on) {
+        this.base_flight.getScore(player).setScore(on ? 1 : 0);
+        return true;
+    }
+
+    /**
+     * Return if a player has flight enabled.
+     * @param player The online player to lookup.
+     * @return true if flight is enabled.
+     */
+    public boolean getFlight(Player player) {
+        if (!this.base_flight.getScore(player).isScoreSet()) {
+            return true;
+        }
+        return this.base_flight.getScore(player).getScore() == 1;
     }
 
     /**

@@ -1,5 +1,5 @@
 name: SoMCBasePlugin
-version: 1.0
+version: 1.1
 main: club.somc.base.BasePlugin
 commands:
   setbase:
@@ -10,3 +10,7 @@ commands:
     description: Will return you to your base.
     usage: /<command>
     permission: somcbase.return
+  baseflight:
+    description: Will set baseflight to on or off.
+    usage: /<command> (on|off)
+    permission: somcbase.flight
