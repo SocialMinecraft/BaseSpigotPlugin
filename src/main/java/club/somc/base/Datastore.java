@@ -10,20 +10,30 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Datastore {
 
-    private Objective base_x;
+    /*private Objective base_x;
     private Objective base_y;
     private Objective base_z;
-    private Objective base_world;
+    private Objective base_world;*/
+    private Objective is_main;
+    private Connection conn;
 
-    public Datastore(JavaPlugin plugin) {
+    public Datastore(JavaPlugin plugin, String url) throws SQLException {
+
+        //
+        this.conn = DriverManager.getConnection(url);
+
         // https://www.spigotmc.org/threads/creating-a-scoreboard.156548/
         final ScoreboardManager manager = Bukkit.getScoreboardManager();
         final Scoreboard board = manager.getMainScoreboard();
 
         try {
-            if (board.getObjective("somcbase.x") == null) {
+            /*if (board.getObjective("somcbase.x") == null) {
                 board.registerNewObjective("somcbase.x", "dummy", "SoMCBase.X");
             }
             if (board.getObjective("somcbase.y") == null) {
@@ -34,15 +44,19 @@ public class Datastore {
             }
             if (board.getObjective("somcbase.world") == null) {
                 board.registerNewObjective("somcbase.world", "dummy", "SoMCBase.world");
-            }
+            }*/
 
+            if (board.getObjective("somcbase.is_main") == null) {
+                board.registerNewObjective("somcbase.is_main", "dummy", "SoMCBase.is_main");
+            }
         } catch (IllegalArgumentException ex) {
             plugin.getLogger().severe(ex.toString());
         }
-        this.base_x = board.getObjective("somcbase.x");
+        /*this.base_x = board.getObjective("somcbase.x");
         this.base_y = board.getObjective("somcbase.y");
         this.base_z = board.getObjective("somcbase.z");
-        this.base_world = board.getObjective("somcbase.world");
+        this.base_world = board.getObjective("somcbase.world");*/
+        this.is_main = board.getObjective("somcbase.is_main");
     }
 
     /**

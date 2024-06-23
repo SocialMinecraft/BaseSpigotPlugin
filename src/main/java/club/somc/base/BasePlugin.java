@@ -8,6 +8,7 @@ import io.nats.client.Nats;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.UUID;
 
 
 public class BasePlugin extends JavaPlugin {
@@ -19,8 +20,21 @@ public class BasePlugin extends JavaPlugin {
         super.onEnable();
         this.saveDefaultConfig();
 
+        // UUID?
+        String uuid = this.getConfig().getString("uuid");
+        if (uuid == null || uuid.isEmpty()) {
+            uuid = UUID.randomUUID().toString().replace("-", "");
+            this.getConfig().set("uuid", uuid);
+            this.saveConfig();
+        }
+
+        // setup datastore
         Datastore ds = new Datastore(this);
 
+        // Check if we have installed the database before
+        //this.getConfig().getInt("dbVersion")
+
+        // connect to nats
         try {
             this.nc = Nats.connect(getConfig().getString("natsUrl"));
         } catch (IOException e) {
@@ -29,9 +43,11 @@ public class BasePlugin extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
+        // setup commmands
         this.getCommand("setbase").setExecutor(new SetBaseCommand(ds));
         this.getCommand("base").setExecutor(new ReturnToBaseCommand(ds));
 
+        // setup listeners
         getServer().getPluginManager().registerEvents(new BaseListener(ds), this);
     }
 

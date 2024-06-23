@@ -1,1 +1,3 @@
 natsUrl: "nats://nats:4222"
+postgresUrl: "jdbc:postgresql://localhost/bases?user=postgres&password=secret&ssl=true"
+uuid: ""
