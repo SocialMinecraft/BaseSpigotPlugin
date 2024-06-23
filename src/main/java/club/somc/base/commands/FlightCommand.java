@@ -25,6 +25,7 @@ public class FlightCommand implements CommandExecutor {
         }
         if (args.length == 0 || !(args[0].equalsIgnoreCase("on") || args[0].equalsIgnoreCase("off"))) {
             player.sendMessage(ChatColor.RED + "Usage: /baseflight <on|off>");
+            return false;
         }
         this.ds.setFlight(player, args[0].equalsIgnoreCase("on"));
         StringBuilder response = new StringBuilder();
