@@ -24,7 +24,7 @@ public class BasePlugin extends JavaPlugin {
 
         Datastore ds = new Datastore(this);
 
-        this.getCommand("setbase").setExecutor(new SetBaseCommand(ds));
+        this.getCommand("setbase").setExecutor(new SetBaseCommand(ds, 600));
         this.getCommand("base").setExecutor(new ReturnToBaseCommand(ds));
         this.getCommand("baseflight").setExecutor(new FlightCommand(ds));
 
